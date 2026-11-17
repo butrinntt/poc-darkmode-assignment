@@ -86,6 +86,32 @@ This started as duplication: `#3B82F6` showed up in 30+ files. After the first d
 
 The tokens are intentionally narrow. Anything outside the `brand` / `success` / `surface` set still uses Tailwind's default palette (`gray`, `emerald`, `white`) so the project does not invent a parallel design system for primitives that already exist.
 
+## Theming
+
+The app ships a light and a dark theme, switched by the toggle in the navbar.
+
+Tailwind runs in `darkMode: ['class']`, so the theme is a `dark` class on `<html>`. Everything else is CSS variables declared in `app/globals.css`: `:root` holds the light values, `.dark` overrides them.
+
+The design used to be dark-only, with `text-white`, `text-gray-400` and `bg-white/5` written directly into components. Those are now semantic tokens, so a component does not know which theme it renders in:
+
+```txt
+text-foreground          strong text
+text-foreground-soft     secondary text
+text-foreground-muted    supporting copy
+text-foreground-subtle   labels and meta
+bg-surface-base          page background
+bg-surface-elevated      raised sections, menus, dialogs, toasts
+bg-overlay/5             alpha fills, borders, dividers and rings
+```
+
+`overlay` is a single channel (`--overlay`) that is white in dark mode and near-black in light mode, so `border-overlay/10` keeps the same visual weight in both themes instead of needing a `dark:` variant per element.
+
+Literal colors stay where the surface underneath does not change with the theme: `text-white` on a `bg-brand` button, and the badges that sit on top of a property photo. Status colors (emerald, amber, red) keep a `dark:` variant because the accessible tint differs per theme.
+
+`providers/theme-provider.tsx` owns the state and persists the choice in `localStorage`. With nothing stored, the app follows `prefers-color-scheme` and falls back to dark, and it keeps following system changes until the user picks a theme explicitly.
+
+The theme is applied before paint by the small inline script in `lib/theme/theme-storage.ts`, which `app/layout.tsx` renders in `<head>`. Without it the first frame would render in the default theme and flash. That is also why `<html>` carries `suppressHydrationWarning`: the script mutates the element before React hydrates.
+
 ## Blocks Pattern
 
 Page-level composed sections live in `components/blocks/`:

@@ -110,9 +110,9 @@ export function FractionalOwnershipSlider({
           <p
             className={cn(
               'flex items-center gap-2 font-semibold',
-              marketPriceStatus === 'live' && 'text-emerald-300',
-              marketPriceStatus === 'loading' && 'text-gray-400',
-              marketPriceStatus === 'fallback' && 'text-amber-300',
+              marketPriceStatus === 'live' && 'text-emerald-600 dark:text-emerald-300',
+              marketPriceStatus === 'loading' && 'text-foreground-muted',
+              marketPriceStatus === 'fallback' && 'text-amber-600 dark:text-amber-300',
             )}
           >
             <span
@@ -120,15 +120,15 @@ export function FractionalOwnershipSlider({
               className={cn(
                 'h-1.5 w-1.5 shrink-0 rounded-full',
                 marketPriceStatus === 'live' && 'animate-pulse bg-emerald-400',
-                marketPriceStatus === 'loading' && 'bg-gray-500',
+                marketPriceStatus === 'loading' && 'bg-foreground-subtle',
                 marketPriceStatus === 'fallback' && 'bg-amber-400',
               )}
             />
             <span className="truncate">{marketStatusCopy.label}</span>
           </p>
-          <p className="mt-1 text-[11px] text-gray-500">{marketStatusCopy.detail}</p>
+          <p className="mt-1 text-[11px] text-foreground-subtle">{marketStatusCopy.detail}</p>
         </div>
-        <p className="shrink-0 font-mono text-sm font-bold text-white">
+        <p className="shrink-0 font-mono text-sm font-bold text-foreground">
           {usdFormatter.format(effectiveCryptoPrice)}
         </p>
       </div>
@@ -147,37 +147,37 @@ export function FractionalOwnershipSlider({
       {/* Stats grid */}
       <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-4">
         <div>
-          <p className="text-[10.5px] font-semibold uppercase tracking-wider text-gray-500">
+          <p className="text-[10.5px] font-semibold uppercase tracking-wider text-foreground-subtle">
             Tokens
           </p>
-          <p className="mt-1 text-base font-bold text-white">{tokens}</p>
+          <p className="mt-1 text-base font-bold text-foreground">{tokens}</p>
         </div>
         <div>
-          <p className="text-[10.5px] font-semibold uppercase tracking-wider text-gray-500">
+          <p className="text-[10.5px] font-semibold uppercase tracking-wider text-foreground-subtle">
             USD Value
           </p>
-          <p className="mt-1 text-base font-bold text-white">{usdFormatter.format(usdValue)}</p>
+          <p className="mt-1 text-base font-bold text-foreground">{usdFormatter.format(usdValue)}</p>
         </div>
         <div>
-          <p className="text-[10.5px] font-semibold uppercase tracking-wider text-gray-500">
+          <p className="text-[10.5px] font-semibold uppercase tracking-wider text-foreground-subtle">
             {cryptoSymbol} Equivalent
           </p>
-          <p className="mt-1 text-base font-bold text-white">
+          <p className="mt-1 text-base font-bold text-foreground">
             {cryptoValue.toFixed(4)} {cryptoSymbol}
           </p>
         </div>
         <div>
-          <p className="text-[10.5px] font-semibold uppercase tracking-wider text-gray-500">
+          <p className="text-[10.5px] font-semibold uppercase tracking-wider text-foreground-subtle">
             Ownership Percentage
           </p>
-          <p className="mt-1 text-base font-bold text-emerald-300">
+          <p className="mt-1 text-base font-bold text-emerald-600 dark:text-emerald-300">
             {ownershipPercentage.toFixed(2)}%
           </p>
         </div>
       </div>
 
       {/* Ownership progress */}
-      <div className="mt-6 h-1.5 overflow-hidden rounded-full bg-white/[0.08]">
+      <div className="mt-6 h-1.5 overflow-hidden rounded-full bg-overlay/[0.08]">
         <div
           className="h-full rounded-full bg-gradient-to-r from-brand to-brand-soft transition-all duration-300 ease-in-out"
           style={{ width: `${ownershipPercentage}%` }}

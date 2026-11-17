@@ -17,21 +17,21 @@ const ORIGIN_IMAGE =
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-surface-base text-gray-100">
+    <div className="min-h-screen bg-surface-base text-foreground">
       {/* 1 — Editorial intro */}
       <section className="pb-20 pt-28 sm:pt-36">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-start gap-12 md:grid-cols-12 md:gap-16">
             <div className="md:col-span-5">
               <Eyebrow>About BlockEstate</Eyebrow>
-              <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl">
+              <h1 className="mt-5 text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl md:text-6xl">
                 Premium real estate,{' '}
                 <span className="font-display italic font-medium text-brand">
                   open to everyone.
                 </span>
               </h1>
             </div>
-            <div className="space-y-5 text-[15px] leading-relaxed text-gray-400 sm:text-base md:col-span-6 md:col-start-7">
+            <div className="space-y-5 text-[15px] leading-relaxed text-foreground-muted sm:text-base md:col-span-6 md:col-start-7">
               <p>
                 Founded in 2023 by a team of real estate veterans and blockchain innovators,
                 BlockEstate emerged from a simple yet powerful idea: make premium real estate
@@ -74,13 +74,13 @@ export default function AboutPage() {
       {/* 4 — Stats inline strip */}
       <section className="py-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-12 border-y border-white/10 py-16 sm:grid-cols-3 sm:gap-6">
+          <div className="grid gap-12 border-y border-overlay/10 py-16 sm:grid-cols-3 sm:gap-6">
             {aboutStats.map((item) => (
               <div key={item.label} className="text-center">
-                <p className="text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl">
+                <p className="text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
                   {item.stat}
                 </p>
-                <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-gray-500">
+                <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground-subtle">
                   {item.label}
                 </p>
               </div>
@@ -115,8 +115,8 @@ export default function AboutPage() {
                     className="object-cover"
                   />
                 </div>
-                <h3 className="mt-5 text-base font-semibold text-white">{member.name}</h3>
-                <p className="mt-1 text-sm text-gray-400">{member.role}</p>
+                <h3 className="mt-5 text-base font-semibold text-foreground">{member.name}</h3>
+                <p className="mt-1 text-sm text-foreground-muted">{member.role}</p>
               </article>
             ))}
           </div>

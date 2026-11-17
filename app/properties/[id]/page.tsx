@@ -56,11 +56,11 @@ export default async function PropertyDetailPage({ params }: Props) {
   const availableUSD = property.price * (property.tokensAvailable / 100)
 
   return (
-    <div className="min-h-screen bg-surface-base text-gray-100">
+    <div className="min-h-screen bg-surface-base text-foreground">
       <div className="mx-auto max-w-7xl px-4 pb-24 pt-10 sm:px-6 lg:px-8">
         <Link
           href="/properties"
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-400 transition-colors hover:text-white"
+          className="inline-flex items-center gap-2 text-sm font-medium text-foreground-muted transition-colors hover:text-foreground"
         >
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           Back to all properties
@@ -69,19 +69,19 @@ export default async function PropertyDetailPage({ params }: Props) {
         {/* Header */}
         <div className="mt-8">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/[0.05] px-3 py-1 text-[11px] font-medium text-white ring-1 ring-white/10">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-overlay/[0.05] px-3 py-1 text-[11px] font-medium text-foreground ring-1 ring-overlay/10">
               <TypeIcon className="h-3 w-3" aria-hidden="true" />
               {property.type}
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-success/10 px-3 py-1 text-[11px] font-medium text-emerald-200 ring-1 ring-emerald-400/30">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-success/10 px-3 py-1 text-[11px] font-medium text-emerald-700 ring-1 ring-emerald-500/30 dark:text-emerald-200 dark:ring-emerald-400/30">
               <ShieldCheck className="h-3 w-3" aria-hidden="true" />
               On-Chain
             </span>
           </div>
-          <h1 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+          <h1 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
             {property.title}
           </h1>
-          <p className="mt-3 inline-flex items-center gap-1.5 text-base text-gray-400">
+          <p className="mt-3 inline-flex items-center gap-1.5 text-base text-foreground-muted">
             <MapPin className="h-4 w-4" aria-hidden="true" />
             {property.location}
           </p>
@@ -105,32 +105,32 @@ export default async function PropertyDetailPage({ params }: Props) {
 
           {/* 2. Investment panel (Asset value + Funding + Slider + CTA) — sticky on lg */}
           <aside className="lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:sticky lg:top-24 lg:self-start">
-            <div className="rounded-3xl bg-white/[0.03] p-7 backdrop-blur-sm">
+            <div className="rounded-3xl bg-overlay/[0.03] p-7 backdrop-blur-sm">
               <div className="flex items-baseline justify-between gap-3">
                 <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground-subtle">
                     Asset value
                   </p>
-                  <p className="mt-2 text-3xl font-bold tracking-tight text-white">
+                  <p className="mt-2 text-3xl font-bold tracking-tight text-foreground">
                     ${property.price.toLocaleString('en-US')}
                   </p>
                 </div>
-                <span className="inline-flex shrink-0 items-center rounded-full bg-success/12 px-2.5 py-1 text-[11px] font-semibold text-emerald-300 ring-1 ring-emerald-400/25">
+                <span className="inline-flex shrink-0 items-center rounded-full bg-success/12 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 ring-1 ring-emerald-500/25 dark:text-emerald-300 dark:ring-emerald-400/25">
                   {property.roi}% ROI
                 </span>
               </div>
 
               <div className="mt-5" aria-labelledby="funding-status-heading">
                 <div className="flex items-center justify-between text-[12px]">
-                  <span id="funding-status-heading" className="font-semibold text-white">
+                  <span id="funding-status-heading" className="font-semibold text-foreground">
                     {fundedPercent}% funded
                   </span>
-                  <span className="text-gray-400">
+                  <span className="text-foreground-muted">
                     ${availableUSD.toLocaleString('en-US')} left
                   </span>
                 </div>
                 <div
-                  className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/[0.06]"
+                  className="mt-2 h-1.5 overflow-hidden rounded-full bg-overlay/[0.06]"
                   role="progressbar"
                   aria-valuenow={fundedPercent}
                   aria-valuemin={0}
@@ -144,7 +144,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                 </div>
               </div>
 
-              <div className="my-6 h-px bg-white/10" />
+              <div className="my-6 h-px bg-overlay/10" />
 
               <FractionalOwnershipSlider
                 tokenPrice={TOKEN_PRICE_USD}
@@ -157,7 +157,7 @@ export default async function PropertyDetailPage({ params }: Props) {
                 Invest Now
               </Button>
 
-              <p className="mt-4 text-center text-[11px] text-gray-500">
+              <p className="mt-4 text-center text-[11px] text-foreground-subtle">
                 Settled on-chain · From ${TOKEN_PRICE_USD} / share
               </p>
             </div>
@@ -177,7 +177,7 @@ export default async function PropertyDetailPage({ params }: Props) {
           {/* 4. About — desktop row 3 */}
           <div className="min-w-0 lg:col-start-1 lg:row-start-3">
             <Eyebrow>About this property</Eyebrow>
-            <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-gray-400 sm:text-base">
+            <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-foreground-muted sm:text-base">
               <p>{property.description}</p>
               <p>
                 Each share is fully tokenized on-chain via a dedicated LLC structure, giving you

@@ -12,7 +12,13 @@ export default {
     extend: {
       colors: {
         background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        foreground: {
+          DEFAULT: 'hsl(var(--foreground))',
+          soft: 'hsl(var(--foreground-soft))',
+          muted: 'hsl(var(--foreground-muted))',
+          subtle: 'hsl(var(--foreground-subtle))',
+        },
+        overlay: 'hsl(var(--overlay) / <alpha-value>)',
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
@@ -63,8 +69,8 @@ export default {
         },
         // Surface tones (page backgrounds)
         surface: {
-          base: '#0B1120',
-          elevated: '#0E172A',
+          base: 'hsl(var(--surface-base))',
+          elevated: 'hsl(var(--surface-elevated))',
         },
       },
       fontFamily: {

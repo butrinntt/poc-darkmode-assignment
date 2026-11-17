@@ -3,7 +3,9 @@ import localFont from 'next/font/local'
 import './globals.css'
 import { AuthProvider } from '@/providers/auth-provider'
 import { ToastProvider } from '@/providers/toast-provider'
+import { ThemeProvider } from '@/providers/theme-provider'
 import { WalletProvider } from '@/providers/wallet-provider'
+import { themeInitScript } from '@/lib/theme/theme-storage'
 import { Footer } from '@/components/blocks/footer'
 import { Navbar } from '@/components/navigation/navbar'
 
@@ -33,19 +35,24 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-surface-base min-h-screen pt-[68px]`}
       >
-        <ToastProvider>
-          <AuthProvider>
-            <WalletProvider>
-              <Navbar />
-              {children}
-              <Footer />
-            </WalletProvider>
-          </AuthProvider>
-        </ToastProvider>
+        <ThemeProvider>
+          <ToastProvider>
+            <AuthProvider>
+              <WalletProvider>
+                <Navbar />
+                {children}
+                <Footer />
+              </WalletProvider>
+            </AuthProvider>
+          </ToastProvider>
+        </ThemeProvider>
       </body>
     </html>
   )

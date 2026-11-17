@@ -17,28 +17,28 @@ type ToastSeverityStyles = {
 
 const toastSeverityClassNames: Record<ToastSeverity, ToastSeverityStyles> = {
   info: {
-    root: 'border-white/10 bg-gray-950',
-    title: 'text-white',
-    description: 'text-gray-300',
-    close: 'text-gray-400 hover:text-white focus-visible:ring-white/40',
+    root: 'border-overlay/10 bg-surface-elevated',
+    title: 'text-foreground',
+    description: 'text-foreground-soft',
+    close: 'text-foreground-muted hover:text-foreground focus-visible:ring-brand/60',
   },
   success: {
-    root: 'border-l-4 border-emerald-500/70 bg-emerald-950/90 ring-1 ring-emerald-400/25',
-    title: 'text-emerald-100',
-    description: 'text-emerald-200/90',
-    close: 'text-emerald-200/80 hover:text-emerald-50 focus-visible:ring-emerald-300/60',
+    root: 'border-l-4 border-emerald-500/70 bg-emerald-50 ring-1 ring-emerald-500/20 dark:bg-emerald-950/90 dark:ring-emerald-400/25',
+    title: 'text-emerald-900 dark:text-emerald-100',
+    description: 'text-emerald-800 dark:text-emerald-200/90',
+    close: 'text-emerald-700 hover:text-emerald-900 focus-visible:ring-emerald-500/60 dark:text-emerald-200/80 dark:hover:text-emerald-50 dark:focus-visible:ring-emerald-300/60',
   },
   warning: {
-    root: 'border-l-4 border-amber-500/80 bg-amber-950/90 ring-1 ring-amber-400/25',
-    title: 'text-amber-100',
-    description: 'text-amber-200/90',
-    close: 'text-amber-200/80 hover:text-amber-50 focus-visible:ring-amber-300/60',
+    root: 'border-l-4 border-amber-500/80 bg-amber-50 ring-1 ring-amber-500/20 dark:bg-amber-950/90 dark:ring-amber-400/25',
+    title: 'text-amber-900 dark:text-amber-100',
+    description: 'text-amber-800 dark:text-amber-200/90',
+    close: 'text-amber-700 hover:text-amber-900 focus-visible:ring-amber-500/60 dark:text-amber-200/80 dark:hover:text-amber-50 dark:focus-visible:ring-amber-300/60',
   },
   error: {
-    root: 'border-l-8 border-red-500 bg-red-900/95 ring-1 ring-red-400/70 shadow-red-950/60',
-    title: 'text-red-100',
-    description: 'text-red-200/90',
-    close: 'text-red-200/80 hover:text-red-50 focus-visible:ring-red-300/60',
+    root: 'border-l-8 border-red-500 bg-red-50 ring-1 ring-red-500/30 shadow-red-900/10 dark:bg-red-900/95 dark:ring-red-400/70 dark:shadow-red-950/60',
+    title: 'text-red-900 dark:text-red-100',
+    description: 'text-red-800 dark:text-red-200/90',
+    close: 'text-red-700 hover:text-red-900 focus-visible:ring-red-500/60 dark:text-red-200/80 dark:hover:text-red-50 dark:focus-visible:ring-red-300/60',
   },
 }
 
@@ -49,7 +49,7 @@ const ToastRoot = React.forwardRef<
   <ToastPrimitive.Root
     ref={ref}
     className={cn(
-      'group pointer-events-auto relative flex w-full items-start justify-between gap-3 overflow-hidden rounded-lg border border-white/10 bg-gray-950 p-4 text-white shadow-lg shadow-black/30 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-80 data-[state=open]:slide-in-from-top-full data-[state=closed]:slide-out-to-right-full sm:max-w-sm sm:data-[state=open]:slide-in-from-bottom-full',
+      'group pointer-events-auto relative flex w-full items-start justify-between gap-3 overflow-hidden rounded-lg border border-overlay/10 bg-surface-elevated p-4 text-foreground shadow-lg shadow-black/20 dark:shadow-black/30 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-80 data-[state=open]:slide-in-from-top-full data-[state=closed]:slide-out-to-right-full sm:max-w-sm sm:data-[state=open]:slide-in-from-bottom-full',
       className,
     )}
     {...props}
@@ -71,7 +71,7 @@ const ToastDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ToastPrimitive.Description
     ref={ref}
-    className={cn('text-sm text-gray-300', className)}
+    className={cn('text-sm text-foreground-soft', className)}
     {...props}
   />
 ))
